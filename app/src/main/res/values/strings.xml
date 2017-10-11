@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name" translatable="false">Ideal</string>
+    <string name="title_home" translatable="false">首页</string>
+    <string name="title_search" translatable="false">搜索</string>
+    <string name="title_user" translatable="false">用户</string>
+
+    <string name="the_film" translatable="false">电影</string>
+    <string name="the_week_popular" translatable="false">本周流行</string>
+    <string name="the_week_new" translatable="false">本周新片</string>
+    <string name="view_all" translatable="false">更多</string>
+</resources>

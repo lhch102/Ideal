@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--本周流行-->
+        <TextView
+            android:id="@+id/textView_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/the_week_popular"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_all"
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:layout_alignBaseline="@+id/textView_week"
+            android:layout_alignBottom="@+id/textView_week"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:text="@string/view_all"
+            android:textSize="10sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_week"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView_all"
+            android:layout_alignRight="@+id/textView_all"
+            android:layout_below="@+id/textView_week"
+            android:layout_marginTop="8dp" />
+
+        <!--本周新片-->
+        <TextView
+            android:id="@+id/textView_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView_week"
+            android:layout_alignStart="@+id/textView_week"
+            android:layout_below="@+id/recycler_view_week"
+            android:layout_marginTop="8dp"
+            android:text="@string/the_week_new"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_new_all"
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:layout_alignBaseline="@+id/textView_new"
+            android:layout_alignBottom="@+id/textView_new"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:text="@string/view_all"
+            android:textSize="10sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textView_new"
+            android:layout_marginTop="8dp" />
+
+        <!--榜单-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/recycler_view_new"
+            android:layout_marginTop="15dp" />
+
+    </RelativeLayout>
+</ScrollView>
