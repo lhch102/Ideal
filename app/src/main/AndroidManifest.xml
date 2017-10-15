@@ -3,7 +3,6 @@
     package="com.lhch.ideal">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
@@ -24,7 +23,8 @@
             android:label="@string/the_film" />
         <activity
             android:name=".MovieDetailActivity"
-            android:label="@string/_null" />
+            android:label="@string/_null"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
