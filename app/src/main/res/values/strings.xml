@@ -8,4 +8,6 @@
     <string name="the_week_popular" translatable="false">本周流行</string>
     <string name="the_week_new" translatable="false">本周新片</string>
     <string name="view_all" translatable="false">更多</string>
+    <string name="movie_detial" translatable="false">详情</string>
+    <string name="_null" translatable="false"></string>
 </resources>

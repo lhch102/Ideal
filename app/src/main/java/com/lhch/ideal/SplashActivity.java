@@ -53,7 +53,7 @@ public class SplashActivity extends Activity {
         }else {
             loadBingPic();
         }
-        handler.sendEmptyMessageDelayed(1, 100);
+        handler.sendEmptyMessageDelayed(1, 1000);
     }
 
     @Override

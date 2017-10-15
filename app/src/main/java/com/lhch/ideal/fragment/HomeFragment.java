@@ -1,10 +1,10 @@
 package com.lhch.ideal.fragment;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,8 +21,6 @@ import com.lhch.ideal.db.MovieInfo;
 import com.lhch.ideal.db.TopList;
 import com.lhch.ideal.util.HttpUtil;
 import com.lhch.ideal.util.Utility;
-
-import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -88,7 +86,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public void onItemClick(View view, int position) {
                 MovieInfo movieInfo = movieWeekList.get(position);
                 if(movieInfo != null){
-                    MovieDetailActivity.actionStart(view.getContext(),movieInfo.getId());
+                    MovieDetailActivity.actionStart(view.getContext(),movieInfo.getChineseName());
                 }
                 //根据影片ID查询影片详情
 //                queryMovieWeekInfo();
@@ -133,6 +131,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         for (int i = 0; i < 1; i++) {
 
+            //本周流行
             MovieInfo xsk = new MovieInfo("肖生克的救赎", R.drawable.p480747492);
             movieWeekList.add(xsk);
             MovieInfo bwbj = new MovieInfo("霸王别姬", R.drawable.p1910813120);
@@ -141,12 +140,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             movieWeekList.add(zg);
             MovieInfo ag = new MovieInfo("阿甘正传", R.drawable.p510876377);
             movieWeekList.add(ag);
+
+            //本周新片
             MovieInfo ml = new MovieInfo("美丽人生", R.drawable.p510861873);
-            movieWeekList.add(ml);
+            movieNewList.add(ml);
             MovieInfo qy = new MovieInfo("千与千寻", R.drawable.p1910830216);
-            movieWeekList.add(qy);
+            movieNewList.add(qy);
             MovieInfo xdl = new MovieInfo("辛德勒的名单", R.drawable.p492406163);
-            movieWeekList.add(xdl);
+            movieNewList.add(xdl);
+
 
             //榜单推荐
             TopList dbTop = new TopList("豆瓣榜", R.drawable.p480747492);

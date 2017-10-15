@@ -22,7 +22,9 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/the_film" />
-        <!--<activity android:name=".HomeActivity"></activity>-->
+        <activity
+            android:name=".MovieDetailActivity"
+            android:label="@string/_null" />
     </application>
 
 </manifest>
