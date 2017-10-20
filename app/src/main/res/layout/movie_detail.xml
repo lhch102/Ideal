@@ -73,58 +73,116 @@
                 android:id="@+id/director"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/movie_year"
                 android:layout_alignLeft="@+id/movie_year"
-                android:layout_alignStart="@+id/movie_year" />
+                android:layout_alignStart="@+id/movie_year"
+                android:layout_below="@+id/movie_year"
+                android:layout_marginTop="5dp" />
             <!--主演-->
             <TextView
                 android:id="@+id/starring"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/director"
                 android:layout_alignLeft="@+id/director"
-                android:layout_alignStart="@+id/director" />
+                android:layout_alignStart="@+id/director"
+                android:layout_below="@+id/director"
+                android:layout_marginTop="5dp" />
             <!--时长-->
             <TextView
                 android:id="@+id/minute"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/starring"
-                android:text="120 分钟"
                 android:layout_alignLeft="@+id/starring"
-                android:layout_alignStart="@+id/starring" />
+                android:layout_alignStart="@+id/starring"
+                android:layout_below="@+id/starring"
+                android:layout_marginTop="5dp"
+                android:text="120 分钟" />
 
             <Button
                 android:id="@+id/play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/minute"
                 android:layout_marginLeft="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@+id/minute"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:minWidth="100dp"
+                android:background="@drawable/btn_selecto"
                 android:minHeight="30dp"
-                android:text="播放"
-                android:background="@drawable/btn_selecto"/>
+                android:minWidth="100dp"
+                android:text="播放" />
+
             <Button
                 android:id="@+id/add_movie_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minWidth="100dp"
-                android:minHeight="30dp"
-                android:text="加入影单"
                 android:layout_alignBottom="@+id/play"
-                android:layout_toRightOf="@+id/play"
-                android:layout_toEndOf="@+id/play"
                 android:layout_marginLeft="30dp"
                 android:layout_marginStart="30dp"
-                android:background="@drawable/add_movie_button"/>
+                android:layout_toEndOf="@+id/play"
+                android:layout_toRightOf="@+id/play"
+                android:background="@drawable/add_movie_button"
+                android:minHeight="30dp"
+                android:minWidth="100dp"
+                android:text="加入影单" />
+            <!--简介-->
+            <TextView
+                android:id="@+id/introduction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/play"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:text="由美国韦恩斯坦国际影业公司出品的西部动作片，由昆汀·塔伦蒂诺执导，杰米·福克斯、克里斯托弗·瓦尔兹、莱昂纳多·迪卡普里奥、塞缪尔·杰克逊、凯丽·华盛顿领衔主演..." />
 
+            <TextView
+                android:id="@+id/douban_score"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/introduction"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="豆瓣评分"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/IMDB_score"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignBaseline="@+id/douban_score"
+                android:layout_alignBottom="@+id/douban_score"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/douban_score"
+                android:layout_toRightOf="@+id/douban_score"
+                android:gravity="center"
+                android:text="IMDB"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/Letterboxd_score"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignBaseline="@+id/IMDB_score"
+                android:layout_alignBottom="@+id/IMDB_score"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/IMDB_score"
+                android:layout_toRightOf="@+id/IMDB_score"
+                android:gravity="center"
+                android:text="Letterboxd"
+                android:background="@drawable/frame"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </RelativeLayout>
+
+
     </LinearLayout>
 </com.lhch.ideal.view.HeadZoomScrollView>
