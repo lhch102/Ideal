@@ -76,7 +76,7 @@
             android:layout_below="@+id/textView_new"
             android:layout_marginTop="8dp" />
 
-        <!--榜单-->
+        <!--榜单评分-->
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view_top"
             android:layout_width="match_parent"

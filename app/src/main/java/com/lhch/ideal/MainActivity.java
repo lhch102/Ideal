@@ -26,6 +26,9 @@ import java.util.Observer;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * 首页activity
+ */
 public class MainActivity extends AppCompatActivity implements Observer {
 
     @BindView(R.id.bottom_navigation_bar)
@@ -130,9 +133,10 @@ public class MainActivity extends AppCompatActivity implements Observer {
         }
     }
 
-    public void setTitle (CharSequence title){
+    public void setTitle(CharSequence title) {
 
     }
+
     private BottomNavigationItem getItem(int icon, int string) {
         return new BottomNavigationItem(icon, string);
     }
@@ -171,10 +175,11 @@ public class MainActivity extends AppCompatActivity implements Observer {
             isExit = false;
         }
     };
+
     private void exit() {
         if (!isExit) {
             isExit = true;
-            Toast.makeText(getApplicationContext(), "再按一次退出",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "再按一次退出", Toast.LENGTH_SHORT).show();
             // 利用handler延迟发送更改状态信息
             mHandler.sendEmptyMessageDelayed(0, 2000);
         } else {

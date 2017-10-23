@@ -15,6 +15,14 @@ public class TopList extends DataSupport {
     private  int imageId;
     //榜单海报
     private  int imagePic;
+    //榜单评分
+    private  float topScore;
+
+
+    public TopList(String topName, float topScore) {
+        this.topName = topName;
+        this.topScore = topScore;
+    }
 
     public TopList(String topName, int imageId) {
         this.topName = topName;
@@ -43,5 +51,13 @@ public class TopList extends DataSupport {
 
     public void setImagePic(int imagePic) {
         this.imagePic = imagePic;
+    }
+
+    public float getTopScore() {
+        return topScore;
+    }
+
+    public void setTopScore(float topScore) {
+        this.topScore = topScore;
     }
 }

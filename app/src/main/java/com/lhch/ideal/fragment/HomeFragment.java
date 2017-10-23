@@ -32,6 +32,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 /**
+ * 首页碎片
  * Created by Administrator on 2017/9/27.
  */
 
@@ -43,7 +44,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     //本周新片
     private List<MovieInfo> movieNewList = new ArrayList<>();
 
-    private List<TopList> topList = new ArrayList<>();
+    private List<TopList> topList;
     private MovieAdapter adapterWeek;
     private MovieAdapter adapterNew;
     private ProgressDialog progressDialog;
@@ -92,7 +93,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 //                queryMovieWeekInfo();
             }
         });
-
     }
 
     @Override
@@ -149,7 +149,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             MovieInfo xdl = new MovieInfo("辛德勒的名单", R.drawable.p492406163);
             movieNewList.add(xdl);
 
-
+            topList = new ArrayList<>();
             //榜单推荐
             TopList dbTop = new TopList("豆瓣榜", R.drawable.p480747492);
             topList.add(dbTop);
