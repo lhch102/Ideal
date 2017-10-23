@@ -22,6 +22,8 @@ import com.lhch.ideal.db.TopList;
 import com.lhch.ideal.util.HttpUtil;
 import com.lhch.ideal.util.Utility;
 
+import org.litepal.crud.DataSupport;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,8 +88,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onItemClick(View view, int position) {
                 MovieInfo movieInfo = movieWeekList.get(position);
-                if(movieInfo != null){
-                    MovieDetailActivity.actionStart(view.getContext(),movieInfo.getChineseName());
+                if (movieInfo != null) {
+                    MovieDetailActivity.actionStart(view.getContext(), movieInfo.getChineseName());
                 }
                 //根据影片ID查询影片详情
 //                queryMovieWeekInfo();
@@ -110,29 +112,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
      */
     private void initMovie() {
 
-        /*
-         * 查询本周流行影片
-         * 根据影片热度查询前10条影片
-         */
-//        movieWeekList = DataSupport.select("id", "chineseName", "images", "grade", "filmYears").order("head desc").limit(10).find(MovieInfo.class);
-
-        /*
-         * 查询本周新片
-         * 根据影片添加日期查询本周新片
-         */
-//        movieNewList = DataSupport.select("id", "chineseName", "images", "grade", "filmYears").order("createTime desc").find(MovieInfo.class);
-
-       /* if (movieWeekList.size() < 1 || movieNewList.size() < 1) {
-            //TODO 地址待完善
-            String address = "http://...";
-            //去服务端查询影片信息
+        if (movieWeekList.size() < 1 || movieNewList.size() < 1) {
+            //获取影片信息的接口
+            String address = "http://47.93.235.231:8080/IdealService/api/v1/queryMovieInfo";
+            //去服务端获取全部影片信息
             queryFromService(address);
-        }*/
-
+        }
         for (int i = 0; i < 1; i++) {
+            //查询本周流行影片，根据影片热度查询前10条影片
+            movieWeekList = DataSupport.select("id", "chineseName", "images", "grade", "filmYears").order("head desc").limit(10).find(MovieInfo.class);
+
+            //查询本周新片，根据影片添加日期查询本周新片
+            movieNewList = DataSupport.select("id", "chineseName", "images", "grade", "filmYears").order("createTime desc").find(MovieInfo.class);
+
 
             //本周流行
-            MovieInfo xsk = new MovieInfo("肖生克的救赎", R.drawable.p480747492);
+            /*MovieInfo xsk = new MovieInfo("肖生克的救赎", R.drawable.p480747492);
             movieWeekList.add(xsk);
             MovieInfo bwbj = new MovieInfo("霸王别姬", R.drawable.p1910813120);
             movieWeekList.add(bwbj);
@@ -147,7 +142,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             MovieInfo qy = new MovieInfo("千与千寻", R.drawable.p1910830216);
             movieNewList.add(qy);
             MovieInfo xdl = new MovieInfo("辛德勒的名单", R.drawable.p492406163);
-            movieNewList.add(xdl);
+            movieNewList.add(xdl);*/
 
             topList = new ArrayList<>();
             //榜单推荐
@@ -175,13 +170,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String reponseText = response.body().string();
-                boolean result = Utility.parseJSONWithGSON(reponseText);
+                boolean result = Utility.parseJSONWithGSON(response.body().string());
                 if (result) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             closeProgressDialog();
+                            Toast.makeText(getContext(), "加载失败", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

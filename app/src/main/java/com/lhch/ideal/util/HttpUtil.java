@@ -4,6 +4,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
 /**
+ * 与服务器交互工具类
  * Created by Administrator on 2017/9/29.
  */
 

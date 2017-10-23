@@ -6,6 +6,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lhch.ideal.db.MovieInfo;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.List;
 
 /**

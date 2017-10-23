@@ -49,7 +49,6 @@ public class SplashActivity extends Activity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String bingPic = prefs.getString("bing_pic",null);
         if(bingPic != null){
-            loadBingPic();
             Glide.with(this).load(bingPic).into(bingPicImg);
         }else {
             loadBingPic();
