@@ -6,9 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lhch.ideal.db.MovieInfo;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.List;
 
 /**
@@ -19,15 +16,17 @@ import java.util.List;
 public class Utility {
 
     /**
-     * 解析和处理服务器返回的电影数据
+     * 解析和处理服务器返回的影片信息
+     *
      * @param jsonData
      * @return
      */
-    public static boolean parseJSONWithGSON(String jsonData){
-        if(TextUtils.isEmpty(jsonData)){
+    public static boolean parseJSONWithGSON(String jsonData) {
+        if (TextUtils.isEmpty(jsonData)) {
             Gson gson = new Gson();
-            List<MovieInfo> movieInfoList = gson.fromJson(jsonData,new TypeToken<MovieInfo>(){}.getType());
-            for (MovieInfo movieInfo : movieInfoList){
+            List<MovieInfo> movieInfoList = gson.fromJson(jsonData, new TypeToken<MovieInfo>() {
+            }.getType());
+            for (MovieInfo movieInfo : movieInfoList) {
                 movieInfo.save();
             }
             return true;
