@@ -1,6 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <litepal>
+    <!--数据库名-->
     <dbname value="ideal_movie"/>
+    <!--数据库版本号-->
     <version value='1'/>
+    <!--映射模型-->
     <list>
         <mapping class="com.lhch.ideal.db.MovieInfo"/>
         <mapping class="com.lhch.ideal.db.TopList"/>

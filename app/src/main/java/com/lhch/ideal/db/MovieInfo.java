@@ -28,7 +28,7 @@ public class MovieInfo extends DataSupport {
     //年代
     private int filmYears;
     //影片类型
-    private char filmTypes;
+    private String filmTypes;
     //简介
     private String introduction;
     //影片标签
@@ -36,9 +36,9 @@ public class MovieInfo extends DataSupport {
     //影单ID
     private int movieListId;
     //影片来源；0:豆瓣；1:IMDB；2:letterboxd；3:烂番茄；4:Netflix；5:Facebook；
-    private char filmSource;
+    private String filmSource;
     //媒体类型；0：电影；1：电视剧；2：动漫；3：纪录片；4：纪录片；5：综艺节目
-    private char mediumType;
+    private String mediumType;
     //时长
     private int filmTime;
     //影片热度
@@ -123,13 +123,6 @@ public class MovieInfo extends DataSupport {
         this.filmYears = filmYears;
     }
 
-    public char getFilmTypes() {
-        return filmTypes;
-    }
-
-    public void setFilmTypes(char filmTypes) {
-        this.filmTypes = filmTypes;
-    }
 
     public String getIntroduction() {
         return introduction;
@@ -155,19 +148,27 @@ public class MovieInfo extends DataSupport {
         this.movieListId = movieListId;
     }
 
-    public char getFilmSource() {
+    public String getFilmTypes() {
+        return filmTypes;
+    }
+
+    public void setFilmTypes(String filmTypes) {
+        this.filmTypes = filmTypes;
+    }
+
+    public String getFilmSource() {
         return filmSource;
     }
 
-    public void setFilmSource(char filmSource) {
+    public void setFilmSource(String filmSource) {
         this.filmSource = filmSource;
     }
 
-    public char getMediumType() {
+    public String getMediumType() {
         return mediumType;
     }
 
-    public void setMediumType(char mediumType) {
+    public void setMediumType(String mediumType) {
         this.mediumType = mediumType;
     }
 

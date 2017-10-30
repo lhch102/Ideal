@@ -6,6 +6,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lhch.ideal.db.MovieInfo;
 
+import org.json.JSONException;
+
 import java.util.List;
 
 /**
@@ -22,10 +24,8 @@ public class Utility {
      * @return
      */
     public static boolean parseJSONWithGSON(String jsonData) {
-        if (TextUtils.isEmpty(jsonData)) {
-            Gson gson = new Gson();
-            List<MovieInfo> movieInfoList = gson.fromJson(jsonData, new TypeToken<MovieInfo>() {
-            }.getType());
+        if (!TextUtils.isEmpty(jsonData)) {
+            List<MovieInfo> movieInfoList = new Gson().fromJson(jsonData, new TypeToken<List<MovieInfo>>() {}.getType());
             for (MovieInfo movieInfo : movieInfoList) {
                 movieInfo.save();
             }

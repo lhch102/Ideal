@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -166,6 +165,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void queryFromService(String address) {
+        //显示进度对话框
         showProgressDialog();
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
@@ -175,6 +175,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            //关闭进度对话框
                             closeProgressDialog();
                             Toast.makeText(getContext(), "加载失败", Toast.LENGTH_SHORT).show();
                         }
@@ -188,6 +189,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        //关闭进度对话框
                         closeProgressDialog();
                         Toast.makeText(getContext(), "加载失败", Toast.LENGTH_SHORT).show();
                     }
