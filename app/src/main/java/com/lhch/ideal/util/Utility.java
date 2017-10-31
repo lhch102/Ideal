@@ -1,12 +1,15 @@
 package com.lhch.ideal.util;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lhch.ideal.db.MovieInfo;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -24,9 +27,10 @@ public class Utility {
      * @return
      */
     public static boolean parseJSONWithGSON(String jsonData) {
+
         if (!TextUtils.isEmpty(jsonData)) {
-            List<MovieInfo> movieInfoList = new Gson().fromJson(jsonData, new TypeToken<List<MovieInfo>>() {}.getType());
-            for (MovieInfo movieInfo : movieInfoList) {
+            List<MovieInfo> movieInfos = new Gson().fromJson(jsonData,new TypeToken<List<MovieInfo>>(){}.getType());
+            for (MovieInfo movieInfo : movieInfos){
                 movieInfo.save();
             }
             return true;

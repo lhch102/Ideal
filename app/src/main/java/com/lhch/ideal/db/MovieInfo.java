@@ -46,11 +46,11 @@ public class MovieInfo extends DataSupport {
     //创建人
     private int createName;
     //创建时间
-    private Date createTime;
+    private String createTime;
     //修改人
     private int modifyName;
     //修改时间
-    private Date modifyTime;
+    private String modifyTime;
 
     private int imagesId;
 
@@ -196,13 +196,7 @@ public class MovieInfo extends DataSupport {
         this.createName = createName;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 
     public int getModifyName() {
         return modifyName;
@@ -212,11 +206,19 @@ public class MovieInfo extends DataSupport {
         this.modifyName = modifyName;
     }
 
-    public Date getModifyTime() {
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getModifyTime() {
         return modifyTime;
     }
 
-    public void setModifyTime(Date modifyTime) {
+    public void setModifyTime(String modifyTime) {
         this.modifyTime = modifyTime;
     }
 

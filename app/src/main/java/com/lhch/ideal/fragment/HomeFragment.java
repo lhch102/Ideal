@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,6 +50,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private MovieAdapter adapterWeek;
     private MovieAdapter adapterNew;
     private ProgressDialog progressDialog;
+
+    private final String TAG = this.getClass().toString();
 
     @Nullable
     @Override
@@ -115,16 +118,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             //获取影片信息的接口
             String address = "http://47.93.235.231:8080/IdealService/api/v1/queryMovieInfo";
             //去服务端获取全部影片信息
-            queryFromService(address);
+            this.queryFromService(address);
         }
         for (int i = 0; i < 1; i++) {
             //查询本周流行影片，根据影片热度查询前10条影片
             movieWeekList = DataSupport.select("id", "chineseName", "images", "grade", "filmYears").order("head desc").limit(10).find(MovieInfo.class);
-
             //查询本周新片，根据影片添加日期查询本周新片
             movieNewList = DataSupport.select("id", "chineseName", "images", "grade", "filmYears").order("createTime desc").find(MovieInfo.class);
-
-
             //本周流行
             /*MovieInfo xsk = new MovieInfo("肖生克的救赎", R.drawable.p480747492);
             movieWeekList.add(xsk);
@@ -170,6 +170,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                Log.d(TAG, response.body().string());
+                //解析json
                 boolean result = Utility.parseJSONWithGSON(response.body().string());
                 if (result) {
                     getActivity().runOnUiThread(new Runnable() {
@@ -183,6 +185,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
             }
 
+            //对异常进行处理
             @Override
             public void onFailure(Call call, IOException e) {
                 //通过runOnUtiThired()方法回到主线程处理逻辑
