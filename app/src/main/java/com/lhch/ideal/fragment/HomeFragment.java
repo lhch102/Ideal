@@ -71,9 +71,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         // 初始化界面控件
         initMovie();
         //本周流行
-        adapterWeek = new MovieAdapter(movieWeekList);
+        adapterWeek = new MovieAdapter(getContext(),movieWeekList);
         //本周新片
-        adapterNew = new MovieAdapter(movieNewList);
+        adapterNew = new MovieAdapter(getContext(),movieNewList);
         TopListAdapter topListAdapter = new TopListAdapter(topList);
         recyclerWeek.setAdapter(adapterWeek);
         recyclerNew.setAdapter(adapterNew);
@@ -170,9 +170,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d(TAG, response.body().string());
+                String body = response.body().string();
+                Log.d(TAG, body);
                 //解析json
-                boolean result = Utility.parseJSONWithGSON(response.body().string());
+                boolean result = Utility.parseJSONWithGSON(body);
                 if (result) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override

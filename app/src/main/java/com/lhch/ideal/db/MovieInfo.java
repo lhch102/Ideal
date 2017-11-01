@@ -2,8 +2,6 @@ package com.lhch.ideal.db;
 
 import org.litepal.crud.DataSupport;
 
-import java.util.Date;
-
 /**
  * 影片实体类
  * Created by Administrator on 2017/10/2.
@@ -52,11 +50,8 @@ public class MovieInfo extends DataSupport {
     //修改时间
     private String modifyTime;
 
-    private int imagesId;
-
-    public MovieInfo(String chineseName, int imagesId) {
+    public MovieInfo(String chineseName) {
         this.chineseName = chineseName;
-        this.imagesId = imagesId;
     }
 
     public int getId() {
@@ -197,7 +192,6 @@ public class MovieInfo extends DataSupport {
     }
 
 
-
     public int getModifyName() {
         return modifyName;
     }
@@ -222,11 +216,4 @@ public class MovieInfo extends DataSupport {
         this.modifyTime = modifyTime;
     }
 
-    public int getImagesId() {
-        return imagesId;
-    }
-
-    public void setImagesId(int imagesId) {
-        this.imagesId = imagesId;
-    }
 }
