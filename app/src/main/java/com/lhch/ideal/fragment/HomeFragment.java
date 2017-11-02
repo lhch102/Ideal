@@ -40,11 +40,10 @@ import okhttp3.Response;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
-    private List<MovieInfo> movieList = new ArrayList<>();
     //本周流行
-    private List<MovieInfo> movieWeekList = new ArrayList<>();
+    private List<MovieInfo> movieWeekList = new ArrayList<MovieInfo>();
     //本周新片
-    private List<MovieInfo> movieNewList = new ArrayList<>();
+    private List<MovieInfo> movieNewList = new ArrayList<MovieInfo>();
 
     private List<TopList> topList;
     private MovieAdapter adapterWeek;
@@ -64,22 +63,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //本周新片
         RecyclerView recyclerNew = (RecyclerView) view.findViewById(R.id.recycler_view_new);
         recyclerNew.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        //榜单推荐
+        //榜单推
         RecyclerView top = (RecyclerView) view.findViewById(R.id.recycler_view_top);
         top.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         // 初始化界面控件
         initMovie();
         //本周流行
-        adapterWeek = new MovieAdapter(getContext(),movieWeekList);
+        adapterWeek = new MovieAdapter(getContext(), movieWeekList);
         //本周新片
-        adapterNew = new MovieAdapter(getContext(),movieNewList);
+        adapterNew = new MovieAdapter(getContext(), movieNewList);
         TopListAdapter topListAdapter = new TopListAdapter(topList);
         recyclerWeek.setAdapter(adapterWeek);
         recyclerNew.setAdapter(adapterNew);
         //榜单推荐
         top.setAdapter(topListAdapter);
         ButterKnife.bind(this, view);
+
         return view;
     }
 
@@ -114,13 +114,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
      */
     private void initMovie() {
 
-        if (movieWeekList.size() < 1 || movieNewList.size() < 1) {
-            //获取影片信息的接口
-            String address = "http://47.93.235.231:8080/IdealService/api/v1/queryMovieInfo";
-            //去服务端获取全部影片信息
-            this.queryFromService(address);
-        }
         for (int i = 0; i < 1; i++) {
+
             //查询本周流行影片，根据影片热度查询前10条影片
             movieWeekList = DataSupport.select("id", "chineseName", "images", "grade", "filmYears").order("head desc").limit(10).find(MovieInfo.class);
             //查询本周新片，根据影片添加日期查询本周新片
@@ -153,6 +148,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             topList.add(facebookTop);
 
         }
+
+        if (movieWeekList.size() < 1 || movieNewList.size() < 1) {
+            //获取影片信息的接口
+            String address = "http://47.93.235.231:8080/IdealService/api/v1/queryMovieInfo";
+            //去服务端获取全部影片信息
+            this.queryFromService(address);
+        }
+
+
     }
 
     //OnTouch监听器
