@@ -5,7 +5,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.widget.Toast;
@@ -36,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements Observer {
 
     Fragment indexFragment;
     private TextBadgeItem badgeMsg;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

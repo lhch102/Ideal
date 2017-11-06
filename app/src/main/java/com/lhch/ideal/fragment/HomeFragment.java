@@ -80,6 +80,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         top.setAdapter(topListAdapter);
         ButterKnife.bind(this, view);
 
+
         return view;
     }
 
@@ -150,12 +151,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
 
         if (movieWeekList.size() < 1 || movieNewList.size() < 1) {
-            //获取影片信息的接口
-            String address = "http://47.93.235.231:8080/IdealService/api/v1/queryMovieInfo";
             //去服务端获取全部影片信息
-            this.queryFromService(address);
+            this.queryFromService();
         }
-
 
     }
 
@@ -168,7 +166,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void queryFromService(String address) {
+    private void queryFromService() {
+        //获取影片信息的接口
+        String address = "http://47.93.235.231:8080/IdealService/api/v1/queryMovieInfo";
         //显示进度对话框
         showProgressDialog();
         HttpUtil.sendOkHttpRequest(address, new Callback() {
