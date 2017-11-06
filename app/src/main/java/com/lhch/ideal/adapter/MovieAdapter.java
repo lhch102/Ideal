@@ -8,9 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lhch.ideal.R;
 import com.lhch.ideal.db.MovieInfo;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -25,12 +26,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     private OnItemClickListener mOnItemClickListener = null;
 
     public static interface OnItemClickListener {
-        void onItemClick(View view , int position);
+        void onItemClick(View view, int position);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView movieImage;
         TextView movieName;
+
         public ViewHolder(View itemView) {
             super(itemView);
             movieImage = (ImageView) itemView.findViewById(R.id.top_image);
@@ -38,7 +40,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         }
     }
 
-    public MovieAdapter(Context context,List<MovieInfo> movieList) {
+    public MovieAdapter(Context context, List<MovieInfo> movieList) {
         mContext = context;
         mMovieList = movieList;
     }
@@ -55,8 +57,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         MovieInfo movie = mMovieList.get(position);
-        Picasso.with(mContext).load(movie.getImages()).into(viewHolder.movieImage);
-//        viewHolder.movieImage.setImageResource(movie.getImagesId());
+        Glide.with(mContext).load(movie.getImages())
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.error)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(viewHolder.movieImage);
         viewHolder.movieName.setText(movie.getChineseName());
         //将position保存在itemView的Tag中，以便点击时进行获取
         viewHolder.itemView.setTag(position);
@@ -71,7 +76,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     public void onClick(View view) {
         if (mOnItemClickListener != null) {
             //注意这里使用getTag方法获取position
-            mOnItemClickListener.onItemClick(view,(int)view.getTag());
+            mOnItemClickListener.onItemClick(view, (int) view.getTag());
         }
     }
 

@@ -52,6 +52,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private final String TAG = this.getClass().toString();
 
+    public HomeFragment() {
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,7 +90,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        adapterWeek.setOnItemClickListener(new MovieAdapter.OnItemClickListener() {
+        mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_light,
+                adapterWeek.setOnItemClickListener(new MovieAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 MovieInfo movieInfo = movieWeekList.get(position);
