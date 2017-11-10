@@ -50,6 +50,9 @@ public class MovieInfo extends DataSupport {
     //修改时间
     private String modifyTime;
 
+    public MovieInfo() {
+    }
+
     public MovieInfo(String chineseName) {
         this.chineseName = chineseName;
     }
