@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.lhch.ideal.adapter.TopListAdapter;
+import com.lhch.ideal.common.BaseActivity;
 import com.lhch.ideal.db.TopList;
 import com.lhch.ideal.view.DividerItemDecoration;
 
@@ -29,7 +30,7 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2017/10/8.
  */
 
-public class MovieDetailActivity extends AppCompatActivity {
+public class MovieDetailActivity extends BaseActivity {
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;

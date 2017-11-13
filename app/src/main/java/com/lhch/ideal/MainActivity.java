@@ -15,10 +15,13 @@ import android.widget.Toast;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ashokvarma.bottomnavigation.TextBadgeItem;
+import com.lhch.ideal.common.ActivityCollector;
+import com.lhch.ideal.common.BaseActivity;
 import com.lhch.ideal.fragment.HomeFragment;
 import com.lhch.ideal.fragment.SearchFragment;
 import com.lhch.ideal.fragment.UserFragment;
 import com.lhch.ideal.observable.EventBadgeItem;
+import com.lhch.ideal.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,7 @@ import butterknife.ButterKnife;
 /**
  * 首页activity
  */
-public class MainActivity extends AppCompatActivity implements Observer {
+public class MainActivity extends BaseActivity implements Observer {
 
     @BindView(R.id.bottom_navigation_bar)
     BottomNavigationBar bottomNavigationBar;
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        LogUtil.d("","");
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         setContentView(R.layout.activity_main);
@@ -184,7 +188,11 @@ public class MainActivity extends AppCompatActivity implements Observer {
             // 利用handler延迟发送更改状态信息
             mHandler.sendEmptyMessageDelayed(0, 2000);
         } else {
-            finish();
+            //销毁当前活动
+            ActivityCollector.finishAll();
+            //杀掉当前进程
+            android.os.Process.killProcess(android.os.Process.myPid());
+            //终止虚拟机也就是退出Java程序
             System.exit(0);
         }
     }
