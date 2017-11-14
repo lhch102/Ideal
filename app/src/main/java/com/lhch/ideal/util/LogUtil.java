@@ -28,7 +28,7 @@ public class LogUtil {
 
     public static void d(String tag, String msg) {
         if (level <= DEBUG) {
-            LogUtil.d(tag, msg);
+            Log.d(tag, msg);
         }
     }
 

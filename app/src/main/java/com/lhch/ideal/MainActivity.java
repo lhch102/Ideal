@@ -130,7 +130,8 @@ public class MainActivity extends BaseActivity implements Observer {
         indexFragment = to;
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if (from == null) {
-            transaction.add(R.id.content, to).commit();
+            transaction.replace(R.id.content,to).commit();
+//            transaction.addToBackStack(null);
         } else if (!to.isAdded()) {
             transaction.hide(from).add(R.id.content, to).commit();
         } else {
