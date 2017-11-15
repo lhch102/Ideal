@@ -44,7 +44,6 @@ public class MainActivity extends BaseActivity implements Observer {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        LogUtil.d("","");
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         setContentView(R.layout.activity_main);
