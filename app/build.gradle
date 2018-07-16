@@ -16,6 +16,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+
+        //这句很关键
+        jackOptions {
+            enabled true
+        }
     }
     buildTypes {
         release {
