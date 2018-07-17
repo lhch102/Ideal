@@ -1,5 +1,6 @@
 package com.lhch.ideal;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +14,13 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.bumptech.glide.Glide;
 import com.lhch.ideal.adapter.TopListAdapter;
 import com.lhch.ideal.common.BaseActivity;
 import com.lhch.ideal.db.TopList;
 import com.lhch.ideal.view.DividerItemDecoration;
+
 
 import java.util.ArrayList;
 import java.util.List;
